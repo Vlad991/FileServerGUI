@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.8.RELEASE'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id "org.springframework.boot" version "2.1.8.RELEASE"
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+}
+
+group 'com.filesynch'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+application {
+    mainClassName = "com.filesynch.Main"
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "http://mvnrepository.com/artifact/"
+    }
+    maven {
+        url("https://repo.spring.io/libs-milestone")
+    }
+    flatDir dirs: "${rootDir}/lib"
+}
+
+jar {
+    baseName = 'Server'
+}
+
+dependencies {
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    // Javax
+    compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+
+    // GUI
+    compile 'com.intellij:forms_rt:7.0.3'
+}
