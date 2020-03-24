@@ -1,11 +1,13 @@
 package com.filesynch;
 
+import com.filesynch.dto.ServerStatus;
 import com.filesynch.gui.FileSynchronizationServer;
 import com.filesynch.logger.Logger;
 import com.filesynch.rmi.ServerGui;
 import com.filesynch.rmi.ServerRmiInt;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,10 +21,17 @@ public class Main {
     public static ServerRmiInt serverRmi;
 
     public static void main(String[] args) {
+        ServerStatus currentServerStatus = ServerStatus.SERVER_STOP;
+        String currentAddress = null;
         try {
             serverRmi = (ServerRmiInt) Naming.lookup("rmi://localhost:8089/gui");
             serverGui = new ServerGui(serverRmi);
             serverRmi.connectGuiToServer(serverGui);
+            String port = serverRmi.getServerStatus();
+            if (port != null) {
+                currentServerStatus = ServerStatus.SERVER_WORK;
+                currentAddress = InetAddress.getLocalHost().getHostAddress() + ":" + port;
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -44,6 +53,15 @@ public class Main {
                 }
             }
         });
+        if (currentServerStatus == ServerStatus.SERVER_WORK) {
+            fileSynchronizationServer.getJLabelServerStatusValue().setText(ServerStatus.SERVER_WORK.toString());
+            fileSynchronizationServer.getJLabelServerStatusValue().setForeground(Color.GREEN);
+            fileSynchronizationServer.getJLabelServerInfoValue().setText(currentAddress);
+        } else {
+            fileSynchronizationServer.getJLabelServerStatusValue().setText(ServerStatus.SERVER_STOP.toString());
+            fileSynchronizationServer.getJLabelServerStatusValue().setForeground(Color.RED);
+            fileSynchronizationServer.getJLabelServerInfoValue().setText("");
+        }
         serverFrame.pack();
         serverFrame.setLocationRelativeTo(null);
         serverFrame.setVisible(true);
