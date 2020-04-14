@@ -2,12 +2,19 @@ package com.filesynch.rmi;
 
 import com.filesynch.dto.ClientInfoDTO;
 
-import javax.swing.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface ServerGuiInt extends Remote {
     public void log(String stringToLog) throws RemoteException;
+
+    public void logYellow(String stringToLog) throws RemoteException;
+
+    public void logBlue(String stringToLog) throws RemoteException;
+
+    public void logGreen(String stringToLog) throws RemoteException;
+
+    public void logRed(String stringToLog) throws RemoteException;
 
     public ClientInfoDTO showNewClientIcon(ClientInfoDTO clientInfoDTO) throws RemoteException;
 

@@ -27,6 +27,26 @@ public class ServerGui extends UnicastRemoteObject implements ServerGuiInt {
     }
 
     @Override
+    public void logYellow(String stringToLog) {
+        Logger.logYellow(stringToLog);
+    }
+
+    @Override
+    public void logBlue(String stringToLog) {
+        Logger.logBlue(stringToLog);
+    }
+
+    @Override
+    public void logGreen(String stringToLog) {
+        Logger.logGreen(stringToLog);
+    }
+
+    @Override
+    public void logRed(String stringToLog) {
+        Logger.logRed(stringToLog);
+    }
+
+    @Override
     public ClientInfoDTO showNewClientIcon(ClientInfoDTO clientInfoDTO) {
         NewClient newClient = new NewClient();
         JFrame newClientFrame = new JFrame("New Client");

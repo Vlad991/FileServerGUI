@@ -17,7 +17,7 @@ plugins {
 group 'com.filesynch'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_12
 
 application {
     mainClassName = "com.filesynch.Main"
@@ -29,7 +29,7 @@ repositories {
     maven {
         url "http://mvnrepository.com/artifact/"
     }
-    flatDir dirs: "${rootDir}/lib"
+    flatDir dirs: "libs"
 }
 
 dependencies {
@@ -43,4 +43,7 @@ dependencies {
 
     // GUI
     compile 'com.intellij:forms_rt:7.0.3'
+
+    // LaF
+    compile files('libs/darcula-1.0.0.jar')
 }

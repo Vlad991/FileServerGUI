@@ -1,5 +1,6 @@
 package com.filesynch;
 
+import com.bulenkov.darcula.DarculaLaf;
 import com.filesynch.dto.ServerStatus;
 import com.filesynch.gui.FileSynchronizationServer;
 import com.filesynch.logger.Logger;
@@ -7,6 +8,7 @@ import com.filesynch.rmi.ServerGui;
 import com.filesynch.rmi.ServerRmiInt;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicLookAndFeel;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.net.InetAddress;
@@ -20,7 +22,9 @@ public class Main {
     public static ServerGui serverGui;
     public static ServerRmiInt serverRmi;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        BasicLookAndFeel darcula = new DarculaLaf();
+        UIManager.setLookAndFeel(darcula);
         ServerStatus currentServerStatus = ServerStatus.SERVER_STOP;
         String currentAddress = null;
         try {
@@ -65,7 +69,7 @@ public class Main {
         serverFrame.pack();
         serverFrame.setLocationRelativeTo(null);
         serverFrame.setVisible(true);
-        Logger.logArea = fileSynchronizationServer.getJTextAreaLog();
+        Logger.logArea = fileSynchronizationServer.getTextPane1();
         Logger.log("Server GUI connected");
     }
 

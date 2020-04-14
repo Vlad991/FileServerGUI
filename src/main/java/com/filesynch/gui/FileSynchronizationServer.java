@@ -40,8 +40,6 @@ public class FileSynchronizationServer {
     private JLabel jLabelCommand;
     @Getter
     private JProgressBar jProgressBarFile;
-    @Getter
-    private JTextArea jTextAreaLog;
     private JButton jButtonStartServer;
     private JButton jButtonStopServer;
     @Getter
@@ -85,6 +83,7 @@ public class FileSynchronizationServer {
     private JButton updateQueuesButton;
     private JButton updateListButton;
     private JTable jTableQueues;
+    private JTextPane textPane1;
     private JButton jButtonSendAllFilesFast;
     private JButton jButtonSendFileFast;
     private Object[] columns;
@@ -327,13 +326,21 @@ public class FileSynchronizationServer {
         jPanelServer.setLayout(new GridLayoutManager(1, 1, new Insets(10, 20, 10, 20), -1, -1));
         jPanelServer.setPreferredSize(new Dimension(1200, 800));
         tabbedPane1 = new JTabbedPane();
-        jPanelServer.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
+        tabbedPane1.setEnabled(true);
+        tabbedPane1.setFocusable(false);
+        Font tabbedPane1Font = this.$$$getFont$$$("JetBrains Mono", Font.BOLD, 28, tabbedPane1.getFont());
+        if (tabbedPane1Font != null) tabbedPane1.setFont(tabbedPane1Font);
+        tabbedPane1.setTabLayoutPolicy(0);
+        tabbedPane1.setTabPlacement(2);
+        tabbedPane1.putClientProperty("html.disable", Boolean.FALSE);
+        jPanelServer.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(200, 200), null, 0, false));
+        tabbedPane1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, this.$$$getFont$$$(null, -1, -1, tabbedPane1.getFont()), new Color(-3092263)));
         jPanelMain = new JPanel();
         jPanelMain.setLayout(new GridLayoutManager(4, 7, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Server", jPanelMain);
         jPanelServerInfo = new JPanel();
         jPanelServerInfo.setLayout(new GridLayoutManager(2, 12, new Insets(0, 0, 0, 0), -1, -1));
-        jPanelMain.add(jPanelServerInfo, new GridConstraints(0, 1, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        jPanelMain.add(jPanelServerInfo, new GridConstraints(0, 1, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         jPanelServerInfo.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(-11911975)), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, this.$$$getFont$$$(null, -1, -1, jPanelServerInfo.getFont())));
         jLabelServerStatus = new JLabel();
         Font jLabelServerStatusFont = this.$$$getFont$$$(null, -1, -1, jLabelServerStatus.getFont());
@@ -352,8 +359,10 @@ public class FileSynchronizationServer {
         jLabelServerInfoValue.setText("");
         jPanelServerInfo.add(jLabelServerInfoValue, new GridConstraints(0, 1, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jButtonStartServer = new JButton();
+        jButtonStartServer.setFocusTraversalPolicyProvider(false);
         Font jButtonStartServerFont = this.$$$getFont$$$(null, -1, -1, jButtonStartServer.getFont());
         if (jButtonStartServerFont != null) jButtonStartServer.setFont(jButtonStartServerFont);
+        jButtonStartServer.setHideActionText(false);
         jButtonStartServer.setText("Start Server");
         jPanelServerInfo.add(jButtonStartServer, new GridConstraints(1, 0, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jButtonStopServer = new JButton();
@@ -377,12 +386,10 @@ public class FileSynchronizationServer {
         jPanelLog.add(jLabelLog, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jScrollPaneLog = new JScrollPane();
         jPanelLog.add(jScrollPaneLog, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-        jTextAreaLog = new JTextArea();
-        jScrollPaneLog.setViewportView(jTextAreaLog);
+        textPane1 = new JTextPane();
+        jScrollPaneLog.setViewportView(textPane1);
         final Spacer spacer1 = new Spacer();
-        jPanelMain.add(spacer1, new GridConstraints(0, 6, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
-        final Spacer spacer2 = new Spacer();
-        jPanelMain.add(spacer2, new GridConstraints(1, 0, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        jPanelMain.add(spacer1, new GridConstraints(1, 0, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         jPanelClients = new JPanel();
         jPanelClients.setLayout(new GridLayoutManager(7, 8, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Clients", jPanelClients);
@@ -515,8 +522,8 @@ public class FileSynchronizationServer {
         updateQueuesButton = new JButton();
         updateQueuesButton.setText("Update Queues");
         panel1.add(updateQueuesButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final Spacer spacer3 = new Spacer();
-        panel1.add(spacer3, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+        final Spacer spacer2 = new Spacer();
+        panel1.add(spacer2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JLabel label4 = new JLabel();
         label4.setText("ALIVE");
         jPanelQueues.add(label4, new GridConstraints(0, 3, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
