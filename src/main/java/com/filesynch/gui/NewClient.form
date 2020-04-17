@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.filesynch.gui.NewClient">
-  <grid id="27dc6" binding="jPanelMain" layout-manager="GridLayoutManager" row-count="11" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="jPanelMain" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="20" left="20" bottom="20" right="20"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -36,7 +36,7 @@
       </component>
       <component id="1e3ab" class="javax.swing.JButton" binding="jButtonConnect">
         <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Add New Client"/>
@@ -68,7 +68,7 @@
       </component>
       <component id="df9d6" class="javax.swing.JLabel" binding="jLabelLogin">
         <constraints>
-          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Login:"/>
@@ -76,7 +76,7 @@
       </component>
       <component id="43ded" class="javax.swing.JTextField" binding="jTextFieldLogin">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="50" height="-1"/>
           </grid>
         </constraints>
@@ -84,7 +84,7 @@
       </component>
       <component id="5ddd1" class="javax.swing.JButton" binding="jButtonReject">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Reject New Client"/>
@@ -114,46 +114,6 @@
           <text value="Status:"/>
         </properties>
       </component>
-      <component id="6006d" class="javax.swing.JLabel" binding="jLabelFilesFolder">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Files Folder:"/>
-        </properties>
-      </component>
-      <component id="d4222" class="javax.swing.JLabel" binding="jLabelSendFrequency">
-        <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Send Fequency:"/>
-        </properties>
-      </component>
-      <component id="14292" class="javax.swing.JLabel" binding="jLabelAliveRequestFrequency">
-        <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Alive Request Frequency"/>
-        </properties>
-      </component>
-      <component id="a7929" class="javax.swing.JTextField" binding="jTextFieldAliveRequestFrequency">
-        <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="47565" class="javax.swing.JTextField" binding="jTextFieldSendFrequency">
-        <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="c9a08" class="javax.swing.JLabel" binding="jLabelNameValue">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -177,14 +137,6 @@
         <properties>
           <text value=""/>
         </properties>
-      </component>
-      <component id="f146f" class="javax.swing.JTextField" binding="jTextFieldFilesFolder">
-        <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
       </component>
     </children>
   </grid>

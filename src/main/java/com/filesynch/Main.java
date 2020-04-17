@@ -1,6 +1,8 @@
 package com.filesynch;
 
 import com.bulenkov.darcula.DarculaLaf;
+import com.filesynch.dto.ClientInfoDTO;
+import com.filesynch.dto.ServerSettingsDTO;
 import com.filesynch.dto.ServerStatus;
 import com.filesynch.gui.FileSynchronizationServer;
 import com.filesynch.logger.Logger;
@@ -110,6 +112,40 @@ public class Main {
     public static void sendAllFiles(String login) {
         try {
             serverRmi.sendAllFiles(login);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ServerSettingsDTO getSettings() {
+        try {
+            return serverRmi.getSettings();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return new ServerSettingsDTO();
+    }
+
+    public static void setSettings(ServerSettingsDTO settings) {
+        try {
+            serverRmi.setSettings(settings);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ClientInfoDTO getClientSettings(String login) {
+        try {
+            return serverRmi.getClientSettings(login);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void setClientSettings(ClientInfoDTO clientInfoDTO) {
+        try {
+            serverRmi.setClientSettings(clientInfoDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

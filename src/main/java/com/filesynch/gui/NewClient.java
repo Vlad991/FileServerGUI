@@ -31,15 +31,9 @@ public class NewClient {
     private JLabel jLabelName;
     private JLabel jLabelLocalIP;
     private JLabel jLabelStatus;
-    private JLabel jLabelFilesFolder;
-    private JLabel jLabelSendFrequency;
-    private JLabel jLabelAliveRequestFrequency;
     private JLabel jLabelNameValue;
     private JLabel jLabelLocalIPValue;
     private JLabel jLabelStatusValue;
-    private JTextField jTextFieldFilesFolder;
-    private JTextField jTextFieldSendFrequency;
-    private JTextField jTextFieldAliveRequestFrequency;
     private ClientInfoDTO clientInfoDTO;
 
     public NewClient() {
@@ -78,7 +72,7 @@ public class NewClient {
      */
     private void $$$setupUI$$$() {
         jPanelMain = new JPanel();
-        jPanelMain.setLayout(new GridLayoutManager(11, 2, new Insets(20, 20, 20, 20), -1, -1));
+        jPanelMain.setLayout(new GridLayoutManager(8, 2, new Insets(20, 20, 20, 20), -1, -1));
         jPanelMain.setPreferredSize(new Dimension(600, 350));
         jLabelExternalIP = new JLabel();
         jLabelExternalIP.setText("External IP:");
@@ -91,7 +85,7 @@ public class NewClient {
         jPanelMain.add(jLabelPCModel, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jButtonConnect = new JButton();
         jButtonConnect.setText("Add New Client");
-        jPanelMain.add(jButtonConnect, new GridConstraints(10, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanelMain.add(jButtonConnect, new GridConstraints(7, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jLabelExternalIPValue = new JLabel();
         jLabelExternalIPValue.setText("");
         jPanelMain.add(jLabelExternalIPValue, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -103,12 +97,12 @@ public class NewClient {
         jPanelMain.add(jLabelPCModelValue, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jLabelLogin = new JLabel();
         jLabelLogin.setText("Login:");
-        jPanelMain.add(jLabelLogin, new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanelMain.add(jLabelLogin, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jTextFieldLogin = new JTextField();
-        jPanelMain.add(jTextFieldLogin, new GridConstraints(9, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(50, -1), null, 0, false));
+        jPanelMain.add(jTextFieldLogin, new GridConstraints(6, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(50, -1), null, 0, false));
         jButtonReject = new JButton();
         jButtonReject.setText("Reject New Client");
-        jPanelMain.add(jButtonReject, new GridConstraints(10, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        jPanelMain.add(jButtonReject, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         jLabelLocalIP = new JLabel();
         jLabelLocalIP.setText("Local IP:");
         jPanelMain.add(jLabelLocalIP, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -118,19 +112,6 @@ public class NewClient {
         jLabelStatus = new JLabel();
         jLabelStatus.setText("Status:");
         jPanelMain.add(jLabelStatus, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        jLabelFilesFolder = new JLabel();
-        jLabelFilesFolder.setText("Files Folder:");
-        jPanelMain.add(jLabelFilesFolder, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        jLabelSendFrequency = new JLabel();
-        jLabelSendFrequency.setText("Send Fequency:");
-        jPanelMain.add(jLabelSendFrequency, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        jLabelAliveRequestFrequency = new JLabel();
-        jLabelAliveRequestFrequency.setText("Alive Request Frequency");
-        jPanelMain.add(jLabelAliveRequestFrequency, new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        jTextFieldAliveRequestFrequency = new JTextField();
-        jPanelMain.add(jTextFieldAliveRequestFrequency, new GridConstraints(8, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(50, -1), null, 0, false));
-        jTextFieldSendFrequency = new JTextField();
-        jPanelMain.add(jTextFieldSendFrequency, new GridConstraints(7, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(50, -1), null, 0, false));
         jLabelNameValue = new JLabel();
         jLabelNameValue.setText("");
         jPanelMain.add(jLabelNameValue, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -140,8 +121,6 @@ public class NewClient {
         jLabelStatusValue = new JLabel();
         jLabelStatusValue.setText("");
         jPanelMain.add(jLabelStatusValue, new GridConstraints(5, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        jTextFieldFilesFolder = new JTextField();
-        jPanelMain.add(jTextFieldFilesFolder, new GridConstraints(6, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(50, -1), null, 0, false));
     }
 
     /**

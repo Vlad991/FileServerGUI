@@ -62,9 +62,6 @@ public class ServerGui extends UnicastRemoteObject implements ServerGuiInt {
         newClient.getJLabelPCNameValue().setText(clientInfoDTO.getPcName());
         newClient.getJLabelPCModelValue().setText(clientInfoDTO.getPcModel());
         newClient.getJLabelStatusValue().setText(clientInfoDTO.getStatus().getStatus());
-        newClient.getJTextFieldFilesFolder().setText(clientInfoDTO.getFilesFolder());
-        newClient.getJTextFieldSendFrequency().setText(String.valueOf(clientInfoDTO.getSendFrequency()));
-        newClient.getJTextFieldAliveRequestFrequency().setText(String.valueOf(clientInfoDTO.getAliveRequestFrequency()));
         synchronized (clientInfoDTO) {
             try {
                 clientInfoDTO.wait();
@@ -73,9 +70,6 @@ public class ServerGui extends UnicastRemoteObject implements ServerGuiInt {
             }
         }
         clientInfoDTO.setLogin(newClient.getJTextFieldLogin().getText());
-        clientInfoDTO.setFilesFolder(newClient.getJTextFieldFilesFolder().getText());
-        clientInfoDTO.setSendFrequency(Integer.parseInt(newClient.getJTextFieldSendFrequency().getText()));
-        clientInfoDTO.setAliveRequestFrequency(Integer.parseInt(newClient.getJTextFieldAliveRequestFrequency().getText()));
         newClientIcons.put(clientInfoDTO.getLogin(), newClientFrame);
         return clientInfoDTO;
     }
@@ -99,7 +93,7 @@ public class ServerGui extends UnicastRemoteObject implements ServerGuiInt {
                     clientInfoDTO.getPcName(),
                     clientInfoDTO.getPcModel(),
                     clientInfoDTO.getStatus(),
-                    clientInfoDTO.getFilesFolder(),
+                    clientInfoDTO.getInputFilesFolder(),
                     clientInfoDTO.getSendFrequency(),
                     clientInfoDTO.getAliveRequestFrequency()});
         });
