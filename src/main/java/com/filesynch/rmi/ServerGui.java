@@ -1,7 +1,6 @@
 package com.filesynch.rmi;
 
 import com.filesynch.dto.ClientInfoDTO;
-import com.filesynch.gui.NewClient;
 import com.filesynch.logger.Logger;
 
 import javax.swing.*;
@@ -44,40 +43,6 @@ public class ServerGui extends UnicastRemoteObject implements ServerGuiInt {
     @Override
     public void logRed(String stringToLog) {
         Logger.logRed(stringToLog);
-    }
-
-    @Override
-    public ClientInfoDTO showNewClientIcon(ClientInfoDTO clientInfoDTO) {
-        NewClient newClient = new NewClient();
-        JFrame newClientFrame = new JFrame("New Client");
-        newClient.setClientInfoDTO(clientInfoDTO);
-        newClientFrame.setContentPane(newClient.getJPanelMain());
-        newClientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        newClientFrame.pack();
-        newClientFrame.setLocationRelativeTo(null);
-        newClientFrame.setVisible(true);
-        newClient.getJLabelNameValue().setText(clientInfoDTO.getName());
-        newClient.getJLabelExternalIPValue().setText(clientInfoDTO.getExternalIp());
-        newClient.getJLabelLocalIPValue().setText(clientInfoDTO.getLocalIp());
-        newClient.getJLabelPCNameValue().setText(clientInfoDTO.getPcName());
-        newClient.getJLabelPCModelValue().setText(clientInfoDTO.getPcModel());
-        newClient.getJLabelStatusValue().setText(clientInfoDTO.getStatus().getStatus());
-        synchronized (clientInfoDTO) {
-            try {
-                clientInfoDTO.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        clientInfoDTO.setLogin(newClient.getJTextFieldLogin().getText());
-        newClientIcons.put(clientInfoDTO.getLogin(), newClientFrame);
-        return clientInfoDTO;
-    }
-
-    @Override
-    public void hideNewClientIcon(String login) {
-        JFrame newClientFrame = newClientIcons.get(login);
-        newClientFrame.setVisible(false);
     }
 
     @Override

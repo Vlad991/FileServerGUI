@@ -44,6 +44,8 @@ public class Main {
 
         serverFrame = new JFrame("File Synchronization Server");
         fileSynchronizationServer = new FileSynchronizationServer();
+        Logger.logArea = fileSynchronizationServer.getTextPane1();
+        Logger.logArea2 = fileSynchronizationServer.getTextPane2();
         serverFrame.setContentPane(fileSynchronizationServer.getJPanelServer());
         serverFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         serverFrame.addWindowListener(new WindowAdapter() {
@@ -71,7 +73,6 @@ public class Main {
         serverFrame.pack();
         serverFrame.setLocationRelativeTo(null);
         serverFrame.setVisible(true);
-        Logger.logArea = fileSynchronizationServer.getTextPane1();
         Logger.log("Server GUI connected");
     }
 

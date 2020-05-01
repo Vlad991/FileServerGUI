@@ -46,4 +46,8 @@ dependencies {
 
     // LaF
     compile files('libs/darcula-1.0.0.jar')
+
+    // Case Format
+    compile group: 'com.google.common', name: 'google-collect', version: '1.0-rc1'
+    compile group: 'com.google.googlejavaformat', name: 'google-java-format', version: '1.7'
 }

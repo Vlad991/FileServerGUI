@@ -17,6 +17,8 @@ public interface ServerRmiInt extends Remote {
 
     public void stopServer() throws RemoteException;
 
+    public void addNewClient(Long id, String login) throws RemoteException;
+
     public void sendMessage(String login, String message) throws RemoteException;
 
     public void sendFile(String login, String file) throws RemoteException;
@@ -34,6 +36,8 @@ public interface ServerRmiInt extends Remote {
     public void setClientSettings(ClientInfoDTO clientInfoDTO) throws RemoteException;
 
     public ClientInfoDTO getClientSettings(String login) throws RemoteException;
+
+    public ClientInfoDTO getClientSettings(Long id) throws RemoteException;
 
     public boolean getQueueNewStatus() throws RemoteException;
 
